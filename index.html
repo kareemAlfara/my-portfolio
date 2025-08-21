@@ -1416,41 +1416,55 @@
             
             <div class="projects-grid">
                 <div class="project-card">
-                    <div class="project-image">
-                      <img src="assets/3.png" alt="Description of image "  class="project-image">
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">E-Commerce App</h3>
-                        <p class="project-description">A full-featured e-commerce application with user authentication, product catalog, shopping cart, and payment integration. Built with clean architecture and state management.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">Dart</span>
-                            <span class="tech-tag">BLoC</span>
-                            <span class="tech-tag">Firebase</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">View Demo</a>
-                            <a href="#" class="project-link">Source Code</a>
-                        </div>
-                    </div>
-                </div>
-
-    <div class="project-card">
-    <div class="project-image" onclick="openVideoPopup()">
-        <img src="assets/3.png" alt="E-Commerce App Demo">
+    <div class="project-image" onclick="openVideoPopup('chatVideo')">
+        <img src="assets/chat_image.png" alt="CHAT ME">
     </div>
     <div class="project-content">
-        <h3 class="project-title">E-Commerce App</h3>
-        <p class="project-description">A full-featured e-commerce application with user authentication, product catalog, shopping cart, and payment integration. Built with clean architecture and state management.</p>
+        <h3 class="project-title">Chat App</h3>
+        <p class="project-description">Chat Me is an open-source instant messaging application built with Flutter and Supabase. Experience seamless communication with real-time messaging, media sharing, voice recordings, and cuurent location sharing—all wrapped in a beautiful, modern interface.</p>
         <div class="project-tech">
             <span class="tech-tag">Flutter</span>
             <span class="tech-tag">Dart</span>
             <span class="tech-tag">BLoC</span>
-            <span class="tech-tag">Firebase</span>
+            <span class="tech-tag">supabase</span>
         </div>
         <div class="project-links">
-            <a href="#" class="project-link">View Demo</a>
-            <a href="#" class="project-link">Source Code</a>
+            <a href="https://apkpure.com/chat-me/com.example.chat_me" class="project-link">View Demo</a>
+            <a href="https://github.com/kareemAlfara/Chat_Me" class="project-link">Source Code</a>
+        </div>
+    </div>
+</div>
+
+<!-- Add this Video Popup HTML before closing body tag -->
+<div class="video-popup" id="videoPopup">
+    <div class="video-container">
+        <button class="close-popup" onclick="closeVideoPopup()">&times;</button>
+        <video id="popupVideo" controls>
+            <source src="assets/chatmevideo.mp4" type="video/mp4">
+            <source src="assets/chatmevideo.mp4" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+        <div class="video-title">CHAT ME</div>
+    </div>
+</div>
+          
+
+    <div class="project-card">
+    <div class="project-image" onclick="openVideoPopup('weatherVideo')">
+        <img src="assets/3.png" alt="Weather app">
+    </div>
+    <div class="project-content">
+        <h3 class="project-title">Weather app</h3>
+        <p class="project-description">A modern, visually rich weather application built with Flutter, offering accurate forecasts, elegant UI animations, and a powerful city-based search system.</p>
+        <div class="project-tech">
+            <span class="tech-tag">Flutter</span>
+            <span class="tech-tag">Dart</span>
+            <span class="tech-tag">BLoC</span>
+            
+        </div>
+        <div class="project-links">
+            <a href="https://apkpure.com/developer?id=38842346" class="project-link">View Demo</a>
+            <a href="https://github.com/kareemAlfara/Professional-Weather-App/tree/main/new_weather_app" class="project-link">Source Code</a>
         </div>
     </div>
 </div>
@@ -1464,26 +1478,72 @@
             <source src="assets/video1.mp4" type="video/webm">
             Your browser does not support the video tag.
         </video>
-        <div class="video-title">E-Commerce App Demo</div>
+        <div class="video-title">weather app</div>
     </div>
 </div>
-                <div class="project-card">
-                    <div class="project-image">🎵</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Music Player</h3>
-                        <p class="project-description">Feature-rich music player with playlist management, audio visualization, and offline support. Includes custom animations and intuitive gesture controls.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">Audio Players</span>
-                            <span class="tech-tag">Animations</span>
-                            <span class="tech-tag">Gestures</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">View Demo</a>
-                            <a href="#" class="project-link">Source Code</a>
-                        </div>
-                    </div>
-                </div>
+                  <div class="project-card">
+    <div class="project-image" onclick="openVideoPopup('noteVideo')">
+        <img src="assets/noteimage.png" alt="note app">
+    </div>
+    <div class="project-content">
+        <h3 class="project-title">note App</h3>
+        <p class="project-description">📝 new‑Note‑app A beautiful, simple, and powerful note app built using Flutter. This app helps you jot down thoughts, manage daily notes, and stay organized—all with a sleek, responsive UI and offline support. </p>
+        <div class="project-tech">
+            <span class="tech-tag">Flutter</span>
+            <span class="tech-tag">Dart</span>
+            <span class="tech-tag">BLoC</span>
+        </div>
+        <div class="project-links">
+            <a href="https://apkpure.com/developer?id=38842346" class="project-link">View Demo</a>
+            <a href="https://github.com/kareemAlfara/new-Note-app" class="project-link">Source Code</a>
+        </div>
+    </div>
+</div>
+
+<!-- Add this Video Popup HTML before closing body tag -->
+<div class="video-popup" id="videoPopup">
+    <div class="video-container">
+        <button class="close-popup" onclick="closeVideoPopup()">&times;</button>
+        <video id="popupVideo" controls>
+            <source src="assets/noteappvideo.mp4" type="video/mp4">
+            <source src="assets/noteappvideo.mp4" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+        <div class="video-title">note App Demo</div>
+    </div>
+</div>
+      
+    <div class="project-card">
+    <div class="project-image" onclick="openVideoPopup('newsVideo')">
+        <img src="assets/45.png" alt="news app">
+    </div>
+    <div class="project-content">
+        <h3 class="project-title">EGY News app</h3>
+        <p class="project-description">A beautifully designed News App built with Flutter that fetches and displays the latest headlines using a news API. The app is fast, responsive, and supports both Android and iOS platforms.</p>
+        <div class="project-tech">
+            <span class="tech-tag">Flutter</span>
+            <span class="tech-tag">Dart</span>
+            <span class="tech-tag">BLoC</span>
+            
+        </div>
+        <div class="project-links">
+            <a href="https://apkpure.com/developer?id=38842346" class="project-link">View Demo</a>
+            <a href="https://github.com/kareemAlfara/EGYNews" class="project-link">Source Code</a>
+        </div>
+    </div>
+</div>
+
+<!-- Add this Video Popup HTML before closing body tag -->
+<div class="video-popup" id="videoPopup">
+    <div class="video-container">
+        <button class="close-popup" onclick="closeVideoPopup()">&times;</button>
+        <video id="popupVideo" controls>
+            <source src="assets/egynewsvideo.mp4" type="video/mp4">
+            <source src="assets/egynewsvideo.mp4" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+        <div class="video-title">weather app</div>
+    </div>    
             </div>
         </div>
     </section>
@@ -1603,17 +1663,41 @@
         document.querySelectorAll('section').forEach(section => {
             observer.observe(section);
         });
-// Video popup functions
-function openVideoPopup() {
+        // Store video sources for each project
+const videoSources = {
+    'chatVideo': {
+        src: 'assets/chatmevideo.mp4', // Replace with actual chat app video
+        title: 'CHAT ME App Demo'
+    },
+    'weatherVideo': {
+        src: 'assets/video1.mp4', // Replace with actual weather app video  
+        title: 'Weather App Demo'
+    },
+    'noteVideo': {
+        src: 'assets/noteappvideo.mp4', // Your existing note app video
+        title: 'Note App Demo'
+    },
+    'newsVideo': {
+        src: 'assets/egynewsvideo.mp4', // Your existing note app video
+        title: 'news App Demo'
+    }
+};
+
+function openVideoPopup(videoType) {
     const popup = document.getElementById('videoPopup');
     const video = document.getElementById('popupVideo');
+    const title = document.querySelector('.video-title');
+    
+    // Set the correct video source and title
+    const videoData = videoSources[videoType];
+    video.src = videoData.src;
+    title.textContent = videoData.title;
     
     popup.classList.add('active');
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
-    
-    // Optional: Auto-play video when popup opens
+    document.body.style.overflow = 'hidden';
     video.play();
 }
+
 
 function closeVideoPopup() {
     const popup = document.getElementById('videoPopup');
