@@ -1518,6 +1518,28 @@
             
             <div class="projects-grid">
                 <div class="project-card">
+                    <div class="project-image" onclick="openVideoPopup('ecommerceVideoPopup')">
+                        <img src="assets/E-Commerce_image.png" alt="E-Commerce app">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">E-Commerce App</h3>
+                        <p class="project-description">E-Commerce is an open-source instant messaging application built with Flutter and Supabase. Experience seamless communication with real-time messaging, media sharing, voice recordings, and current location sharing—all wrapped in a beautiful, modern interface.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Dart</span>
+                            <span class="tech-tag">BLoC</span>
+                            <span class="tech-tag">Supabase</span>
+                            <span class="tech-tag">Firebase</span>
+                        </div>
+                        <br>
+
+                        <div class="project-links">
+                            <a href="https://apkpure.com/chat-me/com.example.chat_me" class="project-link" target="_blank">View Demo</a>
+                            <a href="https://github.com/kareemAlfara" class="project-link" target="_blank">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+    <div class="project-card">
                     <div class="project-image" onclick="openVideoPopup('chatVideoPopup')">
                         <img src="assets/chat_image.png" alt="CHAT ME">
                     </div>
@@ -1538,7 +1560,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="project-card">
                     <div class="project-image" onclick="openVideoPopup('weatherVideoPopup')">
                         <img src="https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=400&h=300&fit=crop" alt="Weather app">
@@ -1628,7 +1649,16 @@
             <div class="video-title">Weather App Demo</div>
         </div>
     </div>
-
+  <div class="video-popup" id="ecommerceVideoPopup">
+        <div class="video-container">
+            <button class="close-popup" onclick="closeVideoPopup('ecommerceVideoPopup')">&times;</button>
+            <video controls preload="metadata">
+                <source src="assets/e-commerce_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-title">E-Commerce App Demo</div>
+        </div>
+    </div>
     <!-- Note App Popup -->
     <div class="video-popup" id="noteVideoPopup">
         <div class="video-container">
