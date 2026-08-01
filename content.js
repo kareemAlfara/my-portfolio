@@ -1,0 +1,405 @@
+/* ============================================================
+   PORTFOLIO CONTENT
+   ------------------------------------------------------------
+   This file is the single source of truth for everything shown
+   on the site. Edit it by hand, or use dashboard.html which
+   provides a form for every field and can re-download this file.
+   ============================================================ */
+
+window.PORTFOLIO_CONTENT = {
+
+  /* ---------- identity + hero ---------- */
+  "profile": {
+    "name": "Kareem Abdelrhman Saad",
+    "shortName": "Kareem Saad",
+    "role": "Flutter & Mobile App Developer",
+    "location": "Cairo, Egypt",
+    "email": "kareemelfara@gmail.com",
+    "phone": "+20 101 477 3263",
+    "whatsapp": "201014773263",
+    "github": "https://github.com/kareemAlfara",
+    "linkedin": "https://linkedin.com/in/kareem-elfara-2aa767337",
+    "cv": "assets/kareem-abdelrhman-saad-cv.pdf",
+    "avatar": "assets/4.jpg",
+    "photo": "assets/4.jpg",
+    "available": true,
+    "availableText": "Available for work"
+  },
+
+  "hero": {
+    "eyebrow": "Flutter & Mobile App Developer — Cairo, Egypt — Open to remote",
+    "headline": "Flutter apps with",
+    "headlineAccent": "clean architecture.",
+    "lead": "I ship cross-platform apps to the App Store and Google Play across social, e-commerce, fitness and recruitment products — built end-to-end on Clean Architecture with Cubit/BLoC, from Figma spec to store release.",
+    "primaryCta": { "label": "Explore projects", "href": "#projects" },
+    "secondaryCta": { "label": "Let's talk", "href": "#contact" },
+    "stats": [
+      { "value": "4", "label": "Production apps" },
+      { "value": "24", "label": "Feature modules" },
+      { "value": "~90%", "label": "Image memory saved" }
+    ],
+    "floatingImages": [
+      "assets/E-Commerce_image.png",
+      "assets/chat_image.png",
+      "assets/45.png"
+    ]
+  },
+
+  /* ---------- about ---------- */
+  "about": {
+    "eyebrow": "How I work",
+    "title": "Products built to last, not just to demo.",
+    "subtitle": "Every app starts with a clear architecture, isolated business logic and a UI layer that stays predictable as the product grows.",
+    "services": [
+      {
+        "icon": "code",
+        "title": "Clean Architecture",
+        "desc": "Data, domain and presentation layers kept separate, with Cubit/BLoC state and GetIt dependency injection."
+      },
+      {
+        "icon": "phone",
+        "title": "Store delivery",
+        "desc": "Full release cycle to App Store Connect and Google Play Console, from Figma spec to production build."
+      },
+      {
+        "icon": "bolt",
+        "title": "Performance",
+        "desc": "Profiling with Flutter DevTools — rebuild scope, frame timing and image decode-size downsampling."
+      },
+      {
+        "icon": "globe",
+        "title": "Bilingual products",
+        "desc": "Arabic RTL and English apps built with easy_localization and layouts that work in both directions."
+      }
+    ],
+    "summaryTitle": "About",
+    "paragraphs": [
+      "Flutter developer with production experience shipping cross-platform apps to the App Store and Google Play across the social, e-commerce, fitness and recruitment domains.",
+      "I build features end-to-end on Clean Architecture with Cubit/BLoC — payment gateway integration, real-time Socket.IO messaging, health-platform activity tracking and push notification systems — working from Figma specifications through REST API integration to store release.",
+      "I work comfortably on bilingual (Arabic RTL / English) products, and I have a background in network security and cryptography from my ITI training."
+    ],
+    "highlightsTitle": "What that looks like",
+    "highlights": [
+      "Clean Architecture with data / domain / presentation separation across a multi-app portfolio.",
+      "Cubit and BLoC for state, GetIt for dependency injection, go_router for navigation, Dio for networking.",
+      "Payment gateway integration with server-verified transaction status and retry handling.",
+      "Real-time messaging over Socket.IO with typing indicators, voice notes and paginated history.",
+      "HealthKit and Health Connect activity tracking combining pedometer, GPS and activity recognition.",
+      "JWT authentication with proactive token refresh and single-flight handling of concurrent 401s."
+    ]
+  },
+
+  /* ---------- experience ---------- */
+  "experience": {
+    "eyebrow": "Career",
+    "title": "Experience.",
+    "subtitle": "Where the production work happens.",
+    "items": [
+      {
+        "role": "Flutter Developer",
+        "company": "ATHR Company",
+        "period": "Aug 2025 — Present",
+        "location": "Egypt",
+        "current": true,
+        "bullets": [
+          "Developed and shipped production Flutter applications end-to-end — Clans, Tayseer Community, Yawm Al-Rashaka (Fitness Day) and Al-Madf Recruitment (Meesan) — from Figma specification to App Store and Google Play release.",
+          "Built features on Clean Architecture (data / domain / presentation) with Cubit state management, GetIt dependency injection, Dio and go_router across a multi-app product portfolio.",
+          "Integrated third-party platforms including payment gateways, Firebase Cloud Messaging, Socket.IO, HealthKit / Health Connect and Google Gemini, collaborating with backend teams on API contracts."
+        ]
+      },
+      {
+        "role": "Trainee",
+        "company": "Information Technology Institute (ITI)",
+        "period": "Aug 2022 — Sep 2022",
+        "location": "Damietta, Egypt",
+        "current": false,
+        "bullets": [
+          "Learned fundamentals of network security, firewalls and VPNs.",
+          "Analyzed malware types and implemented mitigation strategies.",
+          "Gained hands-on experience in cryptography and risk management."
+        ]
+      }
+    ]
+  },
+
+  /* ---------- professional projects ---------- */
+  "projects": {
+    "eyebrow": "Selected work",
+    "title": "Featured projects.",
+    "subtitle": "Production applications built and shipped with the team at ATHR, plus personal work.",
+    "items": [
+      {
+        "title": "Yawm Al-Rashaka (Fitness Day)",
+        "kicker": "Fitness platform",
+        "meta": "ATHR Company · May 2026 — Present",
+        "desc": "A dual-role fitness platform (client + specialist) covering diet and workout plans, activity tracking, real-time chat and an in-app marketplace — 24 feature modules on Clean Architecture with 47 cubits and 92 use cases.",
+        "bullets": [
+          "Integrated the Paymob payment gateway with hosted-checkout WebView, server-verified status polling and retry handling for declined, expired and abandoned payments.",
+          "Built real-time chat over Socket.IO with typing indicators, voice notes, media attachments and paginated history.",
+          "Implemented step and distance tracking through HealthKit and Health Connect, combining pedometer, GPS and activity-recognition signals.",
+          "Delivered AI meal scanning with Google Gemini vision plus an in-app AI coaching chat.",
+          "Reduced network-image memory usage by ~90% through decode-size downsampling."
+        ],
+        "tags": ["Flutter", "Cubit", "Dio", "Socket.IO", "Paymob", "HealthKit", "Gemini"],
+        "screens": [
+          "assets/fitness-1.png",
+          "assets/fitness-2.png",
+          "assets/fitness-3.png"
+        ],
+        "mockTitle": "Fitness Day",
+        "mockSubtitle": "Diet, activity & marketplace",
+        "accent": "#2fae63",
+        "image": "",
+        "video": "",
+        "links": []
+      },
+      {
+        "title": "Tayseer Community",
+        "kicker": "Social platform",
+        "meta": "ATHR Company · Oct 2025 — Mar 2026",
+        "desc": "A modern social platform for the Muslim community, connecting like-minded users through smart compatibility matching, local event discovery and secure private messaging.",
+        "bullets": [
+          "Built a smart-matching feed with compatibility scoring and interest-based discovery.",
+          "Implemented real-time chat, event discovery near the user, and community posts and comments.",
+          "Shipped to the App Store with a polished, production-ready UI."
+        ],
+        "tags": ["Flutter", "Firebase", "Dart", "Real-time chat"],
+        "screens": [
+          "assets/tayseer-1.png",
+          "assets/tayseer-2.png",
+          "assets/tayseer-3.png"
+        ],
+        "mockTitle": "Tayseer",
+        "mockSubtitle": "Halal matching community",
+        "accent": "#ec5f8a",
+        "image": "",
+        "video": "",
+        "links": [
+          { "label": "App Store", "url": "https://apps.apple.com/eg/app/tayseer-community/id6756886227" }
+        ]
+      },
+      {
+        "title": "Clans",
+        "kicker": "Community rooms",
+        "meta": "ATHR Company · Aug 2025 — Oct 2025",
+        "desc": "A community and social-rooms mobile application enabling users to create and join clans, chat and interact in real time, published on the Google Play Store.",
+        "bullets": [
+          "Developed core clan/room creation, membership and social interaction flows.",
+          "Collaborated on UI implementation from Figma design specifications.",
+          "Contributed to release and publishing on Google Play."
+        ],
+        "tags": ["Flutter", "Firebase", "Dart"],
+        "screens": [
+          "assets/clans-1.png",
+          "assets/clans-2.png",
+          "assets/clans-3.png"
+        ],
+        "mockTitle": "Clans",
+        "mockSubtitle": "Walk, earn & build your farm",
+        "accent": "#e0913a",
+        "image": "",
+        "video": "",
+        "links": [
+          { "label": "Play Store", "url": "https://play.google.com/store/apps/details?id=com.rooms.clans" }
+        ]
+      },
+      {
+        "title": "Al-Madf Recruitment (Meesan)",
+        "kicker": "Recruitment platform",
+        "meta": "ATHR Company · Mar 2026 — May 2026",
+        "desc": "A recruitment platform connecting clients with trusted, verified domestic and professional labor services, featuring profile browsing, service requests and booking flows.",
+        "bullets": [
+          "Developed onboarding, service-category browsing and worker profile screens.",
+          "Implemented request and booking workflows aligned with Figma prototypes.",
+          "Worked within a multi-page design system for consistent branding across screens."
+        ],
+        "tags": ["Flutter", "Dart", "Design system"],
+        "screens": [
+          "assets/meesan-1.png",
+          "assets/meesan-2.png",
+          "assets/meesan-3.png"
+        ],
+        "mockTitle": "Meesan",
+        "mockSubtitle": "Verified labor services",
+        "accent": "#4b3ce0",
+        "image": "",
+        "video": "",
+        "links": []
+      },
+      {
+        "title": "Eslami",
+        "kicker": "Islamic app",
+        "meta": "Personal · Jul 2025",
+        "desc": "An Islamic app offering Quran reading and daily azkar, built with Riverpod for scalable, testable state management.",
+        "bullets": [
+          "Implemented Quran browsing and navigation plus categorized azkar sections.",
+          "Structured app state and data flow using Riverpod providers."
+        ],
+        "tags": ["Flutter", "Riverpod", "Dart"],
+        "screens": [
+          "assets/eslami-1.png",
+          "assets/eslami-2.png",
+          "assets/eslami-3.png"
+        ],
+        "mockTitle": "Eslami",
+        "mockSubtitle": "Quran, azkar & prayer times",
+        "accent": "#17a89b",
+        "image": "",
+        "video": "",
+        "links": [
+          { "label": "GitHub", "url": "https://github.com/kareemAlfara/eslami" }
+        ]
+      }
+    ]
+  },
+
+  /* ---------- personal apps with video demos ---------- */
+  "demos": {
+    "eyebrow": "Product walkthroughs",
+    "title": "Demos.",
+    "subtitle": "Screen recordings of personal apps running on device — tap any card to watch.",
+    "items": [
+      {
+        "title": "E-Commerce App",
+        "subtitle": "Ordering flow",
+        "kicker": "Commerce experience",
+        "desc": "A Flutter e-commerce application for fresh produce — browsing, cart, checkout and realtime product updates, backed by Supabase and Firebase.",
+        "tags": ["Flutter", "BLoC", "Supabase", "Firebase"],
+        "image": "assets/E-Commerce_image.png",
+        "lightImage": false,
+        "video": "assets/e-commerce_video.mp4",
+        "links": [
+          { "label": "Source code", "url": "https://github.com/kareemAlfara/-E-Commerce" }
+        ]
+      },
+      {
+        "title": "Chat Me",
+        "subtitle": "Messaging & media",
+        "kicker": "Realtime messaging",
+        "desc": "An open-source instant messaging app built with Flutter and Supabase — realtime messages, media sharing, voice recordings and live location sharing.",
+        "tags": ["Flutter", "BLoC", "Supabase", "Realtime"],
+        "image": "assets/chat_image.png",
+        "lightImage": false,
+        "video": "assets/chatmevideo.mp4",
+        "links": [
+          { "label": "Source code", "url": "https://github.com/kareemAlfara/Chat_Me" }
+        ]
+      },
+      {
+        "title": "Weather App",
+        "subtitle": "Search & forecast",
+        "kicker": "Forecast & data",
+        "desc": "A visually rich weather client with animated conditions, daily statistics charts and a fast city-based search system.",
+        "tags": ["Flutter", "BLoC", "REST API"],
+        "image": "assets/3.png",
+        "lightImage": true,
+        "video": "assets/video1.mp4",
+        "links": [
+          { "label": "Source code", "url": "https://github.com/kareemAlfara/Professional-Weather-App/tree/main/new_weather_app" }
+        ]
+      },
+      {
+        "title": "Note App",
+        "subtitle": "Notes & themes",
+        "kicker": "Productivity",
+        "desc": "A fast note-taking app with colour-coded cards, light and dark themes and full offline support through local storage.",
+        "tags": ["Flutter", "BLoC", "Offline"],
+        "screens": ["assets/noteimage.png"],
+        "mockTitle": "Note App",
+        "mockSubtitle": "Offline notes & themes",
+        "accent": "#7a5cf0",
+        "image": "assets/noteimage.png",
+        "lightImage": false,
+        "video": "assets/noteappvideo.mp4",
+        "links": [
+          { "label": "Source code", "url": "https://github.com/kareemAlfara/new-Note-app" }
+        ]
+      },
+      {
+        "title": "EGY News",
+        "subtitle": "Headlines & categories",
+        "kicker": "News & content",
+        "desc": "A news reader pulling live headlines from a news API, with category browsing, Arabic content support and a responsive layout.",
+        "tags": ["Flutter", "BLoC", "REST API", "Arabic UI"],
+        "image": "assets/45.png",
+        "lightImage": false,
+        "video": "assets/egynewsvideo.mp4",
+        "links": [
+          { "label": "Source code", "url": "https://github.com/kareemAlfara/EGYNews" }
+        ]
+      }
+    ]
+  },
+
+  /* ---------- skills ---------- */
+  "skills": {
+    "eyebrow": "Toolbox",
+    "title": "Skills.",
+    "subtitle": "The stack I reach for when building and shipping mobile products.",
+    "groups": [
+      {
+        "title": "Flutter & Dart",
+        "items": ["Clean Architecture", "Cubit / BLoC", "Riverpod", "GetIt (DI)", "go_router", "Dio", "flutter_screenutil", "easy_localization"]
+      },
+      {
+        "title": "Integrations",
+        "items": ["REST APIs", "Socket.IO", "Firebase Auth", "Firebase FCM", "Paymob", "Google Gemini", "HealthKit / Health Connect", "Google Sign-In", "WebView", "Geolocation & Maps"]
+      },
+      {
+        "title": "Data & Storage",
+        "items": ["Supabase", "Hive", "GetStorage", "Flutter Secure Storage", "SQL"]
+      },
+      {
+        "title": "Tools",
+        "items": ["Git", "Flutter DevTools", "Google Cloud", "App Store Connect", "Play Console", "Figma", "Postman"]
+      },
+      {
+        "title": "Other languages",
+        "items": ["Python", "C#", "HTML", "CSS"]
+      },
+      {
+        "title": "Professional",
+        "items": ["Network Security Fundamentals", "Cryptography", "Risk Management", "Team Collaboration", "Data Analysis", "Attention to Detail"]
+      }
+    ]
+  },
+
+  /* ---------- education, certs, principles ---------- */
+  "education": {
+    "eyebrow": "Education",
+    "title": "Computer & Artificial Intelligence.",
+    "degree": "Bachelor of Computer and Artificial Intelligence",
+    "school": "Damietta University — Damietta, Egypt",
+    "period": "Sep 2019 — Jul 2023",
+    "note": "Graduation project: Smart Attendance Tracker Mobile App — Grade: A",
+    "certsTitle": "Certifications & courses",
+    "certs": [
+      "Flutter Diploma — Route IT Training Center (2025)",
+      "Network Security & Cryptography Training — ITI (2022)"
+    ]
+  },
+
+  "principles": {
+    "eyebrow": "Design principles",
+    "title": "Product code principles.",
+    "items": [
+      "Keep domain logic isolated from UI details.",
+      "Design screens around real user decisions and fast feedback.",
+      "Handle loading, empty and error states as first-class cases.",
+      "Prefer readable code over clever code — the team reads it more than it writes it."
+    ]
+  },
+
+  /* ---------- contact ---------- */
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Let's build your next mobile app.",
+    "text": "Have an idea, a product in progress, or a role to fill? Tell me about it — I usually reply within a day.",
+    "formEndpoint": "https://formspree.io/f/xyzprnrz"
+  },
+
+  /* ---------- footer ---------- */
+  "footer": {
+    "text": "Flutter & Mobile App Developer"
+  }
+};

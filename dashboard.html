@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Dashboard | Kareem Abdelrhman Saad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#eaf1fb; --muted:#9db0c9; --dim:#7d90ab;
+  --accent:#4d9fff; --cyan:#2ad3e0; --amber:#f0b64e; --green:#3ddc84; --red:#fb7185;
+  --panel:rgba(255,255,255,.05); --panel-2:rgba(255,255,255,.075);
+  --line:rgba(255,255,255,.1); --line-2:rgba(255,255,255,.17);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  background:linear-gradient(165deg,#0b1c38,#0f2748 22%,#133455 45%,#131f47 78%,#0c1832);
+  background-attachment:fixed;
+  color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent);text-decoration:none}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+
+/* ---------- top bar ---------- */
+.top{
+  position:sticky;top:0;z-index:50;
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  padding:14px 22px;
+  background:rgba(10,22,42,.86);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(20px) saturate(150%);
+}
+.top h1{font-size:1.02rem;font-weight:700;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+.top h1 .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.top .sp{flex:1}
+
+.btn{
+  display:inline-flex;align-items:center;gap:8px;padding:10px 17px;border-radius:11px;cursor:pointer;
+  font-size:.86rem;font-weight:600;border:1px solid var(--line-2);background:rgba(255,255,255,.06);
+  transition:.22s ease;white-space:nowrap;
+}
+.btn:hover{background:rgba(255,255,255,.12);transform:translateY(-1px)}
+.btn.primary{background:linear-gradient(135deg,#4d9fff,#2f7fe0);border-color:transparent;color:#fff;
+  box-shadow:0 10px 26px rgba(77,159,255,.3)}
+.btn.primary:hover{box-shadow:0 14px 32px rgba(77,159,255,.42)}
+.btn.ghost{background:transparent}
+.btn.danger{color:#ffc9d2;border-color:rgba(251,113,133,.35);background:rgba(251,113,133,.12)}
+.btn.danger:hover{background:rgba(251,113,133,.22)}
+.btn svg{width:15px;height:15px}
+
+.saved{font-size:.8rem;color:var(--green);opacity:0;transition:opacity .3s}
+.saved.show{opacity:1}
+
+/* ---------- layout ---------- */
+.shell{display:grid;grid-template-columns:246px 1fr;gap:22px;max-width:1320px;margin:0 auto;padding:22px}
+
+.side{position:sticky;top:80px;align-self:start;
+  background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:10px}
+.side button{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;
+  padding:11px 14px;border-radius:11px;border:none;background:transparent;cursor:pointer;
+  color:var(--muted);font-size:.88rem;font-weight:500;text-align:left;transition:.2s
+}
+.side button:hover{background:rgba(255,255,255,.06);color:var(--ink)}
+.side button.on{background:rgba(77,159,255,.18);color:#fff;font-weight:600;
+  box-shadow:inset 0 0 0 1px rgba(120,190,255,.28)}
+.side .count{font-size:.72rem;color:var(--dim);background:rgba(255,255,255,.07);
+  padding:1px 8px;border-radius:999px}
+
+.main{min-width:0}
+
+.note{
+  display:flex;gap:12px;align-items:flex-start;
+  padding:16px 18px;border-radius:16px;margin-bottom:20px;
+  background:rgba(240,182,78,.1);border:1px solid rgba(240,182,78,.28);
+  font-size:.87rem;color:#f6dcab;
+}
+.note b{color:#ffd591}
+.note svg{width:18px;height:18px;flex-shrink:0;margin-top:2px;color:var(--amber)}
+
+.card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:26px;margin-bottom:20px}
+.card > h2{font-size:1.2rem;font-weight:700;letter-spacing:-.015em;margin-bottom:4px}
+.card > .hint{font-size:.84rem;color:var(--dim);margin-bottom:22px}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+.f{margin-bottom:16px}
+.f > label{display:flex;align-items:center;gap:8px;font-size:.79rem;font-weight:600;
+  color:var(--dim);margin-bottom:7px;letter-spacing:.03em}
+.f > label .tip{font-weight:400;letter-spacing:0;color:#61748f;font-size:.75rem}
+.f input[type=text],.f textarea{
+  width:100%;padding:12px 14px;border-radius:12px;
+  background:rgba(255,255,255,.05);border:1px solid var(--line);
+  font-size:.9rem;transition:border-color .2s,background .2s,box-shadow .2s
+}
+.f textarea{resize:vertical;min-height:92px;line-height:1.65;display:block}
+.f input:focus,.f textarea:focus{outline:none;border-color:rgba(77,159,255,.5);
+  background:rgba(77,159,255,.08);box-shadow:0 0 0 4px rgba(77,159,255,.1)}
+
+.check{display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:12px;
+  background:rgba(255,255,255,.04);border:1px solid var(--line);cursor:pointer;font-size:.88rem}
+.check input{width:17px;height:17px;accent-color:var(--accent);cursor:pointer}
+
+.thumb{margin-top:10px;border-radius:12px;overflow:hidden;border:1px solid var(--line);
+  max-width:190px;background:rgba(0,0,0,.3)}
+.thumb img{width:100%;height:auto;display:block}
+
+/* ---------- repeatable items ---------- */
+.items{display:grid;gap:14px}
+.item{border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.03);overflow:hidden}
+.item-head{display:flex;align-items:center;gap:10px;padding:12px 14px;
+  background:rgba(255,255,255,.04);border-bottom:1px solid var(--line)}
+.item-head .n{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex-shrink:0;
+  background:rgba(77,159,255,.2);color:#bcd9ff;font-size:.76rem;font-weight:700}
+.item-head strong{flex:1;font-size:.92rem;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ibtn{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;cursor:pointer;
+  background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--muted);transition:.2s;flex-shrink:0}
+.ibtn:hover{background:rgba(255,255,255,.14);color:#fff}
+.ibtn.del:hover{background:rgba(251,113,133,.24);color:#ffd3da;border-color:rgba(251,113,133,.4)}
+.ibtn svg{width:14px;height:14px}
+.item-body{padding:18px}
+
+.add{width:100%;justify-content:center;margin-top:14px;border-style:dashed}
+
+.empty{padding:26px;text-align:center;color:var(--dim);font-size:.88rem;
+  border:1px dashed var(--line-2);border-radius:16px}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .side{position:static;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:6px}
+  .grid2{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<div class="top">
+  <h1><span class="dot"></span> Content Dashboard</h1>
+  <span class="saved" id="saved">Draft saved</span>
+  <span class="sp"></span>
+  <a class="btn" href="index.html" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+    Preview site
+  </a>
+  <button class="btn danger" id="btnDiscard">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+    Discard draft
+  </button>
+  <button class="btn primary" id="btnDownload">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+    Download content.js
+  </button>
+</div>
+
+<div class="shell">
+  <aside class="side" id="side"></aside>
+  <main class="main">
+    <div class="note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+      <div>
+        Edits save instantly as a <b>draft in this browser</b> — open <b>Preview site</b> to see them live.
+        To make them permanent, click <b>Download content.js</b> and replace the <b>content.js</b> file in the
+        project folder, then click <b>Discard draft</b>.
+      </div>
+    </div>
+    <div id="editor"></div>
+  </main>
+</div>
+
+<script src="content.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var KEY = 'portfolio-content';
+  var FILE = window.PORTFOLIO_CONTENT || {};
+  var data;
+
+  try {
+    var draft = localStorage.getItem(KEY);
+    data = draft ? JSON.parse(draft) : JSON.parse(JSON.stringify(FILE));
+  } catch (e) {
+    data = JSON.parse(JSON.stringify(FILE));
+  }
+
+  /* ============================================================
+     SCHEMA — describes every editable field
+     t: text | area | list | tags | bool | links | image
+     ============================================================ */
+  var T = function (k, l, tip) { return { k: k, l: l, t: 'text', tip: tip }; };
+  var A = function (k, l, tip) { return { k: k, l: l, t: 'area', tip: tip }; };
+  var L = function (k, l, tip) { return { k: k, l: l, t: 'list', tip: tip || 'one per line' }; };
+  var G = function (k, l, tip) { return { k: k, l: l, t: 'tags', tip: tip || 'separate with commas' }; };
+  var B = function (k, l) { return { k: k, l: l, t: 'bool' }; };
+  var K = function (k, l) { return { k: k, l: l, t: 'links', tip: 'one per line — Label | https://url' }; };
+  var I = function (k, l, tip) { return { k: k, l: l, t: 'image', tip: tip || 'path inside the project, e.g. assets/photo.jpg' }; };
+
+  var SCHEMA = [
+    {
+      key: 'profile', label: 'Profile',
+      hint: 'Your identity — used in the header, hero photo, contact block and footer.',
+      blocks: [
+        { pair: [T('name', 'Full name'), T('shortName', 'Short name', 'shown in the header capsule')] },
+        { pair: [T('role', 'Job title'), T('location', 'Location')] },
+        { pair: [T('email', 'Email'), T('phone', 'Phone')] },
+        { pair: [T('whatsapp', 'WhatsApp number', 'digits only, with country code'), T('github', 'GitHub URL')] },
+        { pair: [T('linkedin', 'LinkedIn URL'), T('cv', 'CV file', 'e.g. assets/my-cv.pdf — adds a Download CV button')] },
+        { pair: [I('avatar', 'Header avatar'), I('photo', 'Hero photo')] },
+        B('available', 'Show the “available” badge on the hero'),
+        T('availableText', 'Badge text')
+      ]
+    },
+    {
+      key: 'hero', label: 'Hero',
+      hint: 'The first screen visitors see.',
+      blocks: [
+        T('eyebrow', 'Small label above the headline'),
+        { pair: [T('headline', 'Headline'), T('headlineAccent', 'Headline (coloured part)')] },
+        A('lead', 'Intro paragraph'),
+        { collection: 'stats', label: 'Stat tiles', title: 'label', item: [{ pair: [T('value', 'Value'), T('label', 'Label')] }] },
+        L('floatingImages', 'Floating mockup images', 'up to 3 — one image path per line')
+      ]
+    },
+    {
+      key: 'about', label: 'About',
+      hint: 'The “how I work” cards plus the two text panels.',
+      blocks: [
+        T('eyebrow', 'Section label'), T('title', 'Section title'), A('subtitle', 'Section subtitle'),
+        {
+          collection: 'services', label: 'Cards', title: 'title',
+          item: [
+            { pair: [T('title', 'Card title'), T('icon', 'Icon', 'code, phone, bolt, globe, users, shield, layers, rocket')] },
+            A('desc', 'Card text')
+          ]
+        },
+        T('summaryTitle', 'Left panel label'),
+        L('paragraphs', 'Left panel paragraphs', 'one paragraph per line'),
+        T('highlightsTitle', 'Right panel label'),
+        L('highlights', 'Right panel bullet points')
+      ]
+    },
+    {
+      key: 'experience', label: 'Experience',
+      hint: 'Your work history timeline.',
+      blocks: [
+        T('eyebrow', 'Section label'), T('title', 'Section title'), A('subtitle', 'Section subtitle'),
+        {
+          collection: 'items', label: 'Positions', title: 'role',
+          item: [
+            { pair: [T('role', 'Role'), T('company', 'Company')] },
+            { pair: [T('period', 'Period', 'e.g. Aug 2025 — Present'), T('location', 'Location')] },
+            B('current', 'Mark as current position'),
+            L('bullets', 'Responsibilities', 'one bullet per line')
+          ]
+        }
+      ]
+    },
+    {
+      key: 'projects', label: 'Projects',
+      hint: 'Featured project cards. Add 1–4 app screenshots to build an automatic phone mockup tile.',
+      blocks: [
+        T('eyebrow', 'Section label'), T('title', 'Section title'), A('subtitle', 'Section subtitle'),
+        {
+          collection: 'items', label: 'Projects', title: 'title',
+          item: [
+            { pair: [T('title', 'Project name'), T('kicker', 'Category label', 'the small chip on the mockup')] },
+            T('meta', 'Company / date line'),
+            A('desc', 'Short description'),
+            L('bullets', 'Key points', 'one bullet per line'),
+            G('tags', 'Tech tags', 'first 3 also appear on the mockup'),
+            L('screens', 'App screenshots (mockup)', '1 to 4 paths, one per line — builds the phone mockup'),
+            { pair: [T('mockTitle', 'Mockup title', 'short name on the tile — defaults to project name'), T('mockSubtitle', 'Mockup subtitle', 'e.g. ORDERING OPERATIONS APP')] },
+            T('accent', 'Mockup accent colour', 'hex like #e0913a — leave empty for automatic'),
+            { pair: [I('image', 'Fallback image', 'used only when there are no screenshots'), I('video', 'Demo video', 'optional — e.g. assets/demo.mp4')] },
+            K('links', 'Links')
+          ]
+        }
+      ]
+    },
+    {
+      key: 'demos', label: 'Demos',
+      hint: 'Apps with a video walkthrough. Clicking a card opens the video.',
+      blocks: [
+        T('eyebrow', 'Section label'), T('title', 'Section title'), A('subtitle', 'Section subtitle'),
+        {
+          collection: 'items', label: 'Demos', title: 'title',
+          item: [
+            { pair: [T('title', 'App name'), T('subtitle', 'Card subtitle')] },
+            T('kicker', 'Category label', 'the small chip on the mockup'),
+            A('desc', 'Description shown in the video popup'),
+            G('tags', 'Tech tags', 'first 3 also appear on the mockup'),
+            L('screens', 'App screenshots (mockup)', '1 to 4 paths, one per line — builds the phone mockup'),
+            { pair: [T('mockTitle', 'Mockup title'), T('mockSubtitle', 'Mockup subtitle')] },
+            T('accent', 'Mockup accent colour', 'hex like #17b3c4 — leave empty for automatic'),
+            { pair: [I('image', 'Fallback thumbnail'), I('video', 'Video file')] },
+            B('lightImage', 'Fallback thumbnail has a white background (darken it)'),
+            K('links', 'Links')
+          ]
+        }
+      ]
+    },
+    {
+      key: 'skills', label: 'Skills',
+      hint: 'Skill groups shown as tag clouds.',
+      blocks: [
+        T('eyebrow', 'Section label'), T('title', 'Section title'), A('subtitle', 'Section subtitle'),
+        {
+          collection: 'groups', label: 'Groups', title: 'title',
+          item: [T('title', 'Group name'), G('items', 'Skills')]
+        }
+      ]
+    },
+    {
+      key: 'education', label: 'Education',
+      hint: 'Degree and certifications panel.',
+      blocks: [
+        T('eyebrow', 'Panel label'), T('title', 'Panel heading'),
+        T('degree', 'Degree'), T('school', 'University'),
+        T('period', 'Period'), A('note', 'Note / graduation project'),
+        T('certsTitle', 'Certifications heading'),
+        L('certs', 'Certifications', 'one per line')
+      ]
+    },
+    {
+      key: 'principles', label: 'Principles',
+      hint: 'The “product code principles” panel.',
+      blocks: [T('eyebrow', 'Panel label'), T('title', 'Panel heading'), L('items', 'Principles')]
+    },
+    {
+      key: 'contact', label: 'Contact',
+      hint: 'Contact section text and the form destination.',
+      blocks: [
+        T('eyebrow', 'Section label'), T('title', 'Heading'), A('text', 'Intro text'),
+        T('formEndpoint', 'Form endpoint', 'your Formspree URL')
+      ]
+    },
+    {
+      key: 'footer', label: 'Footer',
+      hint: 'The line at the bottom of the page.',
+      blocks: [T('text', 'Footer tagline')]
+    }
+  ];
+
+  /* ============================================================
+     STORAGE
+     ============================================================ */
+  var savedTag = document.getElementById('saved');
+  var savedTimer;
+
+  function save() {
+    try {
+      localStorage.setItem(KEY, JSON.stringify(data));
+      savedTag.classList.add('show');
+      clearTimeout(savedTimer);
+      savedTimer = setTimeout(function () { savedTag.classList.remove('show'); }, 1400);
+    } catch (e) {
+      alert('Could not save the draft: ' + e.message);
+    }
+  }
+
+  /* ============================================================
+     FIELD RENDERING
+     ============================================================ */
+  var SVG = {
+    up: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>',
+    down: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>',
+    del: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>',
+    add: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>'
+  };
+
+  function el(tag, cls, html) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (html != null) n.innerHTML = html;
+    return n;
+  }
+
+  function labelFor(f) {
+    return '<label>' + f.l + (f.tip ? ' <span class="tip">— ' + f.tip + '</span>' : '') + '</label>';
+  }
+
+  /* builds one field bound to obj[f.k] */
+  function buildField(obj, f, onRename) {
+    var wrap = el('div', 'f');
+    var v = obj[f.k];
+
+    if (f.t === 'bool') {
+      wrap.className = 'f';
+      var lab = el('label', 'check');
+      var cb = el('input');
+      cb.type = 'checkbox';
+      cb.checked = !!v;
+      cb.addEventListener('change', function () { obj[f.k] = cb.checked; save(); });
+      lab.appendChild(cb);
+      lab.appendChild(document.createTextNode(f.l));
+      wrap.appendChild(lab);
+      return wrap;
+    }
+
+    wrap.innerHTML = labelFor(f);
+
+    var input;
+    if (f.t === 'area' || f.t === 'list' || f.t === 'links') {
+      input = el('textarea');
+      if (f.t === 'list') {
+        input.value = Array.isArray(v) ? v.join('\n') : (v || '');
+        input.rows = Math.max(3, (Array.isArray(v) ? v.length : 1) + 1);
+      } else if (f.t === 'links') {
+        input.value = (Array.isArray(v) ? v : []).map(function (l) {
+          return (l.label || '') + ' | ' + (l.url || '');
+        }).join('\n');
+        input.rows = 3;
+      } else {
+        input.value = v == null ? '' : v;
+      }
+    } else {
+      input = el('input');
+      input.type = 'text';
+      if (f.t === 'tags') input.value = Array.isArray(v) ? v.join(', ') : (v || '');
+      else input.value = v == null ? '' : v;
+    }
+
+    input.addEventListener('input', function () {
+      var raw = input.value;
+      if (f.t === 'list') {
+        obj[f.k] = raw.split('\n').map(function (s) { return s.trim(); }).filter(Boolean);
+      } else if (f.t === 'tags') {
+        obj[f.k] = raw.split(',').map(function (s) { return s.trim(); }).filter(Boolean);
+      } else if (f.t === 'links') {
+        obj[f.k] = raw.split('\n').map(function (line) {
+          var p = line.split('|');
+          return { label: (p[0] || '').trim(), url: (p[1] || '').trim() };
+        }).filter(function (l) { return l.label || l.url; });
+      } else {
+        obj[f.k] = raw;
+      }
+      if (onRename) onRename();
+      if (f.t === 'image') refreshThumb();
+      save();
+    });
+
+    wrap.appendChild(input);
+
+    var thumb;
+    function refreshThumb() {
+      if (thumb) thumb.remove();
+      thumb = null;
+      var val = obj[f.k];
+      if (f.t !== 'image' || !val || /\.(mp4|webm|mov)$/i.test(val)) return;
+      thumb = el('div', 'thumb');
+      var img = el('img');
+      img.src = val;
+      img.alt = '';
+      img.onerror = function () { if (thumb) { thumb.remove(); thumb = null; } };
+      thumb.appendChild(img);
+      wrap.appendChild(thumb);
+    }
+    if (f.t === 'image') refreshThumb();
+
+    return wrap;
+  }
+
+  /* builds a block: a field, a {pair:[a,b]} row, or a {collection} */
+  function buildBlock(obj, block, host) {
+    if (block.pair) {
+      var row = el('div', 'grid2');
+      block.pair.forEach(function (f) { row.appendChild(buildField(obj, f)); });
+      host.appendChild(row);
+      return;
+    }
+    if (block.collection) {
+      host.appendChild(buildCollection(obj, block));
+      return;
+    }
+    host.appendChild(buildField(obj, block));
+  }
+
+  function buildCollection(obj, block) {
+    var box = el('div');
+    box.appendChild(el('label', null,
+      '<span style="display:block;font-size:.79rem;font-weight:700;color:var(--dim);' +
+      'letter-spacing:.08em;text-transform:uppercase;margin:26px 0 12px">' + block.label + '</span>'));
+
+    var listHost = el('div', 'items');
+    box.appendChild(listHost);
+
+    if (!Array.isArray(obj[block.collection])) obj[block.collection] = [];
+    var arr = obj[block.collection];
+
+    function redraw() {
+      listHost.innerHTML = '';
+      if (!arr.length) {
+        listHost.appendChild(el('div', 'empty', 'Nothing here yet — use the button below to add one.'));
+        return;
+      }
+      arr.forEach(function (item, i) {
+        listHost.appendChild(buildItem(item, i));
+      });
+    }
+
+    function buildItem(item, i) {
+      var node = el('div', 'item');
+
+      var head = el('div', 'item-head');
+      head.appendChild(el('span', 'n', String(i + 1)));
+      var title = el('strong', null, item[block.title] || '(untitled)');
+      head.appendChild(title);
+
+      var up = el('button', 'ibtn', SVG.up);
+      up.title = 'Move up';
+      up.disabled = i === 0;
+      up.style.opacity = i === 0 ? .4 : 1;
+      up.addEventListener('click', function () {
+        if (i === 0) return;
+        arr.splice(i - 1, 0, arr.splice(i, 1)[0]);
+        save(); redraw();
+      });
+
+      var down = el('button', 'ibtn', SVG.down);
+      down.title = 'Move down';
+      down.disabled = i === arr.length - 1;
+      down.style.opacity = i === arr.length - 1 ? .4 : 1;
+      down.addEventListener('click', function () {
+        if (i === arr.length - 1) return;
+        arr.splice(i + 1, 0, arr.splice(i, 1)[0]);
+        save(); redraw();
+      });
+
+      var del = el('button', 'ibtn del', SVG.del);
+      del.title = 'Delete';
+      del.addEventListener('click', function () {
+        if (!confirm('Delete "' + (item[block.title] || 'this item') + '"?')) return;
+        arr.splice(i, 1);
+        save(); redraw();
+      });
+
+      head.appendChild(up); head.appendChild(down); head.appendChild(del);
+      node.appendChild(head);
+
+      var body = el('div', 'item-body');
+      block.item.forEach(function (b) {
+        if (b.pair) {
+          var row = el('div', 'grid2');
+          b.pair.forEach(function (f) {
+            row.appendChild(buildField(item, f, function () {
+              title.textContent = item[block.title] || '(untitled)';
+            }));
+          });
+          body.appendChild(row);
+        } else {
+          body.appendChild(buildField(item, b, function () {
+            title.textContent = item[block.title] || '(untitled)';
+          }));
+        }
+      });
+      node.appendChild(body);
+      return node;
+    }
+
+    var add = el('button', 'btn add', SVG.add + ' Add ' + block.label.toLowerCase().replace(/s$/, ''));
+    add.addEventListener('click', function () {
+      var fresh = {};
+      block.item.forEach(function (b) {
+        (b.pair || [b]).forEach(function (f) {
+          fresh[f.k] = f.t === 'list' || f.t === 'tags' || f.t === 'links' ? [] : (f.t === 'bool' ? false : '');
+        });
+      });
+      arr.push(fresh);
+      save(); redraw();
+    });
+    box.appendChild(add);
+
+    redraw();
+    return box;
+  }
+
+  /* ============================================================
+     SECTION RENDERING
+     ============================================================ */
+  var side = document.getElementById('side');
+  var editor = document.getElementById('editor');
+  var activeKey = SCHEMA[0].key;
+
+  function countOf(sec) {
+    var obj = data[sec.key] || {};
+    var total = 0;
+    sec.blocks.forEach(function (b) {
+      if (b.collection && Array.isArray(obj[b.collection])) total += obj[b.collection].length;
+    });
+    return total;
+  }
+
+  function buildSidebar() {
+    side.innerHTML = '';
+    SCHEMA.forEach(function (sec) {
+      var n = countOf(sec);
+      var b = el('button', sec.key === activeKey ? 'on' : '',
+        '<span>' + sec.label + '</span>' + (n ? '<span class="count">' + n + '</span>' : ''));
+      b.addEventListener('click', function () {
+        activeKey = sec.key;
+        buildSidebar();
+        buildEditor();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      side.appendChild(b);
+    });
+  }
+
+  function buildEditor() {
+    var sec = SCHEMA.filter(function (s) { return s.key === activeKey; })[0];
+    if (!data[sec.key] || typeof data[sec.key] !== 'object') data[sec.key] = {};
+    var obj = data[sec.key];
+
+    editor.innerHTML = '';
+    var card = el('div', 'card');
+    card.appendChild(el('h2', null, sec.label));
+    card.appendChild(el('div', 'hint', sec.hint));
+    sec.blocks.forEach(function (b) { buildBlock(obj, b, card); });
+    editor.appendChild(card);
+  }
+
+  buildSidebar();
+  buildEditor();
+
+  /* ============================================================
+     TOOLBAR ACTIONS
+     ============================================================ */
+  document.getElementById('btnDownload').addEventListener('click', function () {
+    var body =
+      '/* ============================================================\n' +
+      '   PORTFOLIO CONTENT\n' +
+      '   ------------------------------------------------------------\n' +
+      '   Generated by dashboard.html — replace content.js with this\n' +
+      '   file to make the changes permanent.\n' +
+      '   ============================================================ */\n\n' +
+      'window.PORTFOLIO_CONTENT = ' + JSON.stringify(data, null, 2) + ';\n';
+
+    var blob = new Blob([body], { type: 'application/javascript' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'content.js';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+  });
+
+  document.getElementById('btnDiscard').addEventListener('click', function () {
+    if (!confirm('Discard the draft and reload the content from content.js?')) return;
+    localStorage.removeItem(KEY);
+    location.reload();
+  });
+})();
+</script>
+
+</body>
+</html>
