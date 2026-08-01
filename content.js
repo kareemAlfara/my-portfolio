@@ -37,16 +37,16 @@ window.PORTFOLIO_CONTENT = {
     },
     "stats": [
       {
+        "value": "2+",
+        "label": "Years of experience"
+      },
+      {
         "value": "4",
         "label": "Production apps"
       },
       {
         "value": "24",
         "label": "Feature modules"
-      },
-      {
-        "value": "~90%",
-        "label": "Image memory saved"
       }
     ],
     "floatingImages": [
