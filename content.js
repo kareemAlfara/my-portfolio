@@ -51,8 +51,7 @@ window.PORTFOLIO_CONTENT = {
     ],
     "floatingImages": [
       "assets/E-Commerce_image.png",
-      "assets/chat_image.png",
-      "assets/clans-1.png"
+      "assets/chat_image.png"
     ]
   },
   "about": {
